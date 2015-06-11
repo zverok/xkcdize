@@ -21,7 +21,7 @@ but there was some image distortion idea, which makes any graphics look
 
 And there, I've just thinking "Ruby **is** the best language evaaar, if
 I can do the same thing, reproduce this beautiful algo, with the same
-laconizm and elegance.
+brevity and elegance.
 
 Look for yourself, if I could!
 
