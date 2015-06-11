@@ -41,7 +41,7 @@ def xkcdize(src)
 end
 ```
 
-The algo is the same. Look at commented code into [xkcdize.rb](https://github.com/zverok/xkcdize/xkcdize.rb)
+The algo is the same. Look at commented code into [xkcdize.rb](https://github.com/zverok/xkcdize/blob/master/xkcdize.rb)
 
 To be fair, the solution was not easy. The ImageMagick fx-script (which
 is passed to `Image#fx` method) was hard to guess, and it's not a Ruby,
