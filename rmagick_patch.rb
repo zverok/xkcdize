@@ -1,7 +1,7 @@
 # encoding: utf-8
-class RMagick::Image
+class Magick::Image
   def self.random(columns, rows)
-    Image.constitute(columns, rows, 'I', (columns*rows).map{rand}){
+    Image.constitute(columns, rows, 'I', (columns*rows).times.map{rand}){
       self.colorspace = GRAYColorspace
     }
   end
