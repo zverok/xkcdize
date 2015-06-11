@@ -3,8 +3,13 @@ This is a small experimental script to play with Ruby and images.
 It just takes some image and converts makes it "[xkcd](http://xkcd.com/)-like" (effect of
 handwritedness).
 
-Before: <img src="https://raw.github.com/zverok/xkcdize/master/image.png">
-After: <img src="https://raw.github.com/zverok/xkcdize/master/image-xkcd.png">
+**Before:**
+
+<img src="https://raw.github.com/zverok/xkcdize/master/image.png">
+
+**After:**
+
+<img src="https://raw.github.com/zverok/xkcdize/master/image-xkcd.png">
 
 The story behind the script is simple. I've just read an excellent blog 
 [post](http://blog.wolfram.com/2012/10/05/automating-xkcd-diagrams-transforming-serious-to-funny/)
