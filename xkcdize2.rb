@@ -20,21 +20,11 @@ def xkcdize(src, shift=20)
     Image.random(src.columns, src.rows).adaptive_blur(10, 5)
   }
 
-  # The ImageMagick "fx" script we are using is a bit tricky.
-  #
-  # Read it like this:
-  # * script is performed to define each pixel of resulting image
-  # * it is done by reading pixel value (p function) of current pixel
-  # * ...which is shifted relative to current column (i)
-  #   by ± shift/2 pixels. u[1] here is "value" (0..1) of current pixel in
-  #   second image -- grayscale and blurred
-  # * the same is for row -- j is current row and u[2] is third image
-  #   current pixel
-  #
-  # So, the shift of each pixel is a) random b) not more than ±shift/2 by each
-  # axis, and c) smooth comparing to neighbour pixels
-  #
-  src.fx("p{i+#{shift}*(0.5-u[1]),j+#{shift}*(0.5-u[2])}", *distorters)
+  # Trying to replace "fx" version with pure ruby.
+  # It's clean, yet result is unacceptable
+  src.zip(*distorters).map_to_image{|(s, dx, dy), col, row|
+    src.pixel_color(col+shift*(0.5-dx.to_f), row+shift*(0.5-dy.to_f))
+  }
 end
 
 fname = ARGV.shift
@@ -42,7 +32,7 @@ unless fname && File.exists?(fname)
   puts "No filename provided, usage: `#{__FILE__} <imagepath>`"
   exit 1
 end
-outname = fname.sub(/(\.[^.]+)$/, '-xkcd\1')
+outname = fname.sub(/(\.[^.]+)$/, '-xkcd2\1')
 
 start = Time.now
 

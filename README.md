@@ -48,3 +48,29 @@ is passed to `Image#fx` method) was hard to guess, and it's not a Ruby,
 just a bit of RMagick internal script inside mine.
 
 Yet it is all still pretty clean and laconic.
+
+### PS: Clean Ruby version
+
+I've **almost** invented pure-Ruby version (without dirty `fx`) hack, now
+it looks like clean and understandable and debuggable Ruby:
+
+```ruby
+def xkcdize(src, shift=20)
+  distorters = 2.times.map{
+    Image.random(src.columns, src.rows).adaptive_blur(10, 5)
+  }
+
+  src.zip(*distorters).map_to_image{|(s, dx, dy), col, row|
+    src.pixel_color(col+shift*(0.5-dx.to_f), row+shift*(0.5-dy.to_f))
+  }
+end
+```
+
+The algo seems to be EXACTLY the same, yet the result is pretty ugly:
+
+<img src="https://raw.github.com/zverok/xkcdize/master/image-xkcd2.png">
+
+Look at code: [xkcdize2.rb](https://github.com/zverok/xkcdize/blob/master/xkcdize2.rb)
+
+Either I'm missing something, or ImageMagick's `fx` does some
+post-processing for smoother image?
