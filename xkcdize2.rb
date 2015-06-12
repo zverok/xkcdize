@@ -20,8 +20,15 @@ def xkcdize(src, shift=20)
     Image.random(src.columns, src.rows).adaptive_blur(10, 5)
   }
 
-  # Trying to replace "fx" version with pure ruby.
-  # It's clean, yet result is unacceptable
+  # Construct new image from src + distorters
+  # Each pixel of new image at (col, row) is taken from source image
+  # from col+some shift and row+some shift.
+  #
+  # The shifts are based on distorter's pixel intensity at a same (col, row)
+  #
+  # Note src#pixel_from_f(c, r), which, when provided with float coords,
+  # takes _bilinear interpolation_ of pixels around those coords.
+  #
   src.zip(*distorters).map_to_image{|(s, dx, dy), col, row|
     src.pixel_color_f(col+shift*(0.5-dx.to_f), row+shift*(0.5-dy.to_f))
   }
