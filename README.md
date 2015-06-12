@@ -84,3 +84,6 @@ When provided with non-integer coordinates, it returns pixel, which is
 **bilinear interpolation** of pixels near the coordinates. (Though, to
 push it in RMagick, it should respect `Image#pixel_interpolation_method`
 setting).
+
+Also, take a look at `Image#zip(*other_images)` and `ImageList#map_to_image`
+-- they also seem to be of general usefulness: [rmagick_patch.rb](https://github.com/zverok/xkcdize/blob/master/rmagick_patch.rb)
