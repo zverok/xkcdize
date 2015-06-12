@@ -23,7 +23,7 @@ def xkcdize(src, shift=20)
   # Trying to replace "fx" version with pure ruby.
   # It's clean, yet result is unacceptable
   src.zip(*distorters).map_to_image{|(s, dx, dy), col, row|
-    src.pixel_color(col+shift*(0.5-dx.to_f), row+shift*(0.5-dy.to_f))
+    src.pixel_color_f(col+shift*(0.5-dx.to_f), row+shift*(0.5-dy.to_f))
   }
 end
 
