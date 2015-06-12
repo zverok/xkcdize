@@ -29,7 +29,7 @@ Wolfram version:
 
 <img src="https://raw.github.com/zverok/xkcdize/master/xkcd-distort-wolfram.png">
 
-Ruby version:
+Ruby version (not the best one, see below!):
 
 ```ruby
 def xkcdize(src)
@@ -41,7 +41,8 @@ def xkcdize(src)
 end
 ```
 
-The algo is the same. Look at commented code into [xkcdize.rb](https://github.com/zverok/xkcdize/blob/master/xkcdize.rb)
+The algo is the same. Look at commented code into
+[xkcdize.rb](https://github.com/zverok/xkcdize/blob/master/xkcdize.rb)
 
 To be fair, the solution was not easy. The ImageMagick fx-script (which
 is passed to `Image#fx` method) was hard to guess, and it's not a Ruby,
@@ -49,7 +50,7 @@ just a bit of RMagick internal script inside mine.
 
 Yet it is all still pretty clean and laconic.
 
-### PS: Clean Ruby version
+### New: Clean Ruby Version
 
 <strike>I've **almost** invented pure-Ruby version (without dirty `fx`) hack, now
 it looks like clean and understandable and debuggable Ruby. The algo seems to be EXACTLY the same, yet the result is pretty ugly</strike>
